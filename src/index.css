@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500;
+  }
+  .btn-secondary {
+    @apply btn bg-slate-700 hover:bg-slate-600 text-slate-100 focus:ring-slate-500;
+  }
+  .btn-success {
+    @apply btn bg-emerald-600 hover:bg-emerald-700 text-white focus:ring-emerald-500;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 hover:bg-red-700 text-white focus:ring-red-500;
+  }
+  .btn-warning {
+    @apply btn bg-amber-500 hover:bg-amber-600 text-white focus:ring-amber-400;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-slate-800 text-slate-400 hover:text-slate-200 focus:ring-slate-500;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+  .btn-icon {
+    @apply btn p-2;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-slate-800 border border-slate-700 rounded-xl;
+  }
+  .card-header {
+    @apply px-6 py-4 border-b border-slate-700 flex items-center justify-between;
+  }
+  .card-body {
+    @apply p-6;
+  }
+
+  /* Forms */
+  .form-label {
+    @apply block text-sm font-medium text-slate-300 mb-1;
+  }
+  .form-input {
+    @apply w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-500
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           disabled:opacity-50 disabled:cursor-not-allowed text-sm;
+  }
+  .form-select {
+    @apply form-input cursor-pointer;
+  }
+  .form-error {
+    @apply text-red-400 text-xs mt-1;
+  }
+  .form-group {
+    @apply space-y-1;
+  }
+
+  /* Tables */
+  .table-container {
+    @apply overflow-x-auto;
+  }
+  .table {
+    @apply w-full text-sm;
+  }
+  .table thead tr {
+    @apply bg-slate-900/50;
+  }
+  .table th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap;
+  }
+  .table td {
+    @apply px-4 py-3 text-slate-300 whitespace-nowrap;
+  }
+  .table tbody tr {
+    @apply border-t border-slate-700/50 hover:bg-slate-700/30 transition-colors duration-100;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-success { @apply badge bg-emerald-900/60 text-emerald-400 border border-emerald-700/50; }
+  .badge-danger  { @apply badge bg-red-900/60 text-red-400 border border-red-700/50; }
+  .badge-warning { @apply badge bg-amber-900/60 text-amber-400 border border-amber-700/50; }
+  .badge-info    { @apply badge bg-blue-900/60 text-blue-400 border border-blue-700/50; }
+  .badge-neutral { @apply badge bg-slate-700 text-slate-300 border border-slate-600; }
+
+  /* Stats cards */
+  .stat-card {
+    @apply card p-5 flex items-start gap-4;
+  }
+  .stat-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0;
+  }
+
+  /* Page header */
+  .page-header {
+    @apply flex items-center justify-between mb-6;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-slate-100;
+  }
+  .page-subtitle {
+    @apply text-sm text-slate-400 mt-0.5;
+  }
+
+  /* Sidebar */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-700/60 transition-all duration-150 cursor-pointer text-sm font-medium;
+  }
+  .sidebar-item.active {
+    @apply bg-blue-600/20 text-blue-400 border border-blue-500/30;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+  .modal {
+    @apply bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl w-full max-h-[90vh] flex flex-col;
+  }
+  .modal-header {
+    @apply px-6 py-4 border-b border-slate-700 flex items-center justify-between flex-shrink-0;
+  }
+  .modal-body {
+    @apply px-6 py-4 overflow-y-auto flex-1;
+  }
+  .modal-footer {
+    @apply px-6 py-4 border-t border-slate-700 flex items-center justify-end gap-3 flex-shrink-0;
+  }
+  .modal-title {
+    @apply text-lg font-semibold text-slate-100;
+  }
+
+  /* Section divider */
+  .section-title {
+    @apply text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3;
+  }
+
+  /* Search */
+  .search-input {
+    @apply form-input pl-9;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm 15mm;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in { animation: fadeIn 0.2s ease-out; }
+.animate-slide-in { animation: slideIn 0.2s ease-out; }
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
+}
+
+/* ═══════════════════════════════════════
+   PRINT STYLES — Professional Bill Print
+   ═══════════════════════════════════════ */
+@media print {
+  /* Hide EVERYTHING on the page */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Show ONLY the bill preview content */
+  #bill-preview,
+  #bill-preview * {
+    visibility: visible !important;
+  }
+
+  /* Position bill at top-left, full width */
+  #bill-preview {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    z-index: 99999 !important;
+  }
+
+  /* Page setup — A4 with proper margins */
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm 8mm 10mm;
+  }
+
+  /* Remove page background */
+  html, body {
+    background: #fff !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure colored backgrounds print (blue header, etc.) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Hide modal overlay, header title bar, and footer buttons */
+  .modal-overlay,
+  .modal-header,
+  .modal-footer,
+  .modal > .modal-header,
+  .modal > .modal-footer {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   LIGHT MODE THEME
+   Applied when <html class="light"> is toggled by ThemeStore
+   ═══════════════════════════════════════════════════ */
+
+html.light body {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Scrollbars in light mode */
+html.light ::-webkit-scrollbar-track { background: #e2e8f0 !important; }
+html.light ::-webkit-scrollbar-thumb { background: #94a3b8 !important; }
+html.light ::-webkit-scrollbar-thumb:hover { background: #64748b !important; }
+
+/* ── Background overrides ── */
+html.light .bg-slate-950    { background-color: #e2e8f0 !important; }
+html.light .bg-slate-900    { background-color: #f8fafc !important; }
+html.light .bg-slate-800    { background-color: #ffffff !important; }
+html.light .bg-slate-700    { background-color: #f1f5f9 !important; }
+html.light .bg-slate-600    { background-color: #e2e8f0 !important; }
+
+/* ── Text overrides ── */
+html.light .text-white      { color: #0f172a !important; }
+html.light .text-slate-100  { color: #0f172a !important; }
+html.light .text-slate-200  { color: #1e293b !important; }
+html.light .text-slate-300  { color: #334155 !important; }
+html.light .text-slate-400  { color: #64748b !important; }
+html.light .text-slate-500  { color: #94a3b8 !important; }
+
+/* ── Border overrides ── */
+html.light .border-slate-700  { border-color: #e2e8f0 !important; }
+html.light .border-slate-800  { border-color: #e2e8f0 !important; }
+html.light .border-slate-600  { border-color: #cbd5e1 !important; }
+
+/* ── Component class overrides ── */
+
+/* Cards */
+html.light .card        { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+html.light .card-header { border-color: #e2e8f0 !important; }
+
+/* Buttons */
+html.light .btn-secondary       { background-color: #e2e8f0 !important; color: #1e293b !important; }
+html.light .btn-secondary:hover { background-color: #cbd5e1 !important; }
+html.light .btn-ghost           { color: #64748b !important; }
+html.light .btn-ghost:hover     { background-color: #f1f5f9 !important; color: #0f172a !important; }
+
+/* Forms */
+html.light .form-label          { color: #374151 !important; }
+html.light .form-input          { background-color: #ffffff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+html.light .form-input::placeholder { color: #94a3b8 !important; }
+html.light .form-select         { background-color: #ffffff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
+
+/* Tables */
+html.light .table thead tr  { background-color: #f8fafc !important; }
+html.light .table th        { color: #64748b !important; }
+html.light .table td        { color: #1e293b !important; }
+
+/* Modals */
+html.light .modal           { background-color: #ffffff !important; border-color: #e2e8f0 !important; box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important; }
+html.light .modal-header    { border-color: #e2e8f0 !important; }
+html.light .modal-footer    { border-color: #e2e8f0 !important; }
+html.light .modal-title     { color: #0f172a !important; }
+
+/* Page text */
+html.light .page-title      { color: #0f172a !important; }
+html.light .page-subtitle   { color: #64748b !important; }
+html.light .section-title   { color: #94a3b8 !important; }
+
+/* Stat cards */
+html.light .stat-card       { background-color: #ffffff !important; border-color: #e2e8f0 !important; }
+
+/* Sidebar navigation items */
+html.light .sidebar-item        { color: #475569 !important; }
+html.light .sidebar-item:hover  { background-color: #f1f5f9 !important; color: #0f172a !important; }
+html.light .sidebar-item.active { background-color: #eff6ff !important; color: #1d4ed8 !important; border-color: #93c5fd !important; }
+
+/* Glass card */
+html.light .glass-card      { background: rgba(255,255,255,0.92) !important; border-color: rgba(203,213,225,0.6) !important; }
